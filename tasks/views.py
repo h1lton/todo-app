@@ -16,9 +16,9 @@ class TaskViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.request.user.task_set.all()
 
-    @action(detail=True)
+    @action(detail=True, methods=['POST'])
     def close(self, request, pk=None):
         task = self.get_object()
         task.close = not task.close
         task.save()
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT)
