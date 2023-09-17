@@ -1,17 +1,17 @@
 from rest_framework import viewsets, status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.settings import api_settings
 
-from tasks.models import Task
-from tasks.permissions import IsOwner
-from tasks.serializers import TaskSerializer
+from .models import Task
+from .permissions import IsOwner
+from .serializers import TaskSerializer
 
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [*api_settings.DEFAULT_PERMISSION_CLASSES, IsOwner]
 
     def get_queryset(self):
         return self.request.user.task_set.all()

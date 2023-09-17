@@ -1,7 +1,7 @@
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import DefaultRouter
 
 from tasks.views import TaskViewSet
 
-router = SimpleRouter()
+router = DefaultRouter()
 router.register('', TaskViewSet)
 urlpatterns = router.urls
