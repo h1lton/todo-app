@@ -73,7 +73,7 @@ class TasksTests(APITestCase):
 
             self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
             self.tasks[0] = Task.objects.get(id=self.tasks[0].id)
-            self.assertEqual(self.tasks[0].close, not bool(i))
+            self.assertEqual(self.tasks[0].is_close, not bool(i))
 
     def test_close_and_open_someone_elses_task(self):
         """Запрет на открытие и закрытие чужой задачи"""
