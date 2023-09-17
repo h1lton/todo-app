@@ -7,4 +7,5 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('tasks/', include('tasks.urls')),
+    path('subscription/', include('subscription.urls')),
 ]
